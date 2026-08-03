@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from app.routers.home import router as home_router
 from app.routers.playground import router as playground_router
 
-
 app = FastAPI()
 
 

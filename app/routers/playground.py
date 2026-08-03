@@ -1,8 +1,7 @@
 from pathlib import Path
 
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.templating import Jinja2Templates
-
 
 router = APIRouter(prefix="/playground")
 
