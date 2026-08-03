@@ -1,28 +1,18 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
-app = FastAPI(
-    title="My FastAPI", description="My First FastAPI Project", version="1.0.0"
-)
-templates = Jinja2Templates(directory="templates")
-app.mount("/static", StaticFiles(directory="static"), name="satic")
-
-# @app.get("/")
-# def home():
-#     return {"message": "Hello FastAPI"}
+from app.routers.home import router as home_router
+from app.routers.playground import router as playground_router
 
 
-@app.get("/")
-def home(request: Request):
-    return templates.TemplateResponse(
-        request=request,
-        name="index.html",
-        context={
-            "username": "Jibum",
-            "age": 32,
-        },
-    )
+app = FastAPI()
+
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+app.include_router(home_router)
+app.include_router(playground_router)
 
 
 @app.get("/health")

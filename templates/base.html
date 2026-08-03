@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Backend Engineering Playground
+        {% endblock %}
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <a href="/">
+                Backend Engineering Playground
+            </a>
+
+        </div>
+
+        <nav>
+
+            <a href="/">Home</a>
+
+            <a href="#playgrounds">Playgrounds</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#journey">Journey</a>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <p>
+
+                © 2026 Jibum Jung
+
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#">
+                    GitHub
+                </a>
+
+                <a href="#">
+                    Portfolio
+                </a>
+
+                <a href="#">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script src="{{ url_for('static', path='/js/script.js') }}">
+    </script>
+
+</body>
+
+</html>
