@@ -1,0 +1,311 @@
+/* ==========================================================
+   PLAYGROUND COMMON
+========================================================== */
+
+
+.playground-hero {
+
+    padding: 100px 0 60px;
+
+}
+
+
+.playground-hero h1 {
+
+    font-size: 56px;
+
+    margin: 20px 0;
+
+}
+
+
+.playground-hero p {
+
+    color: #8b949e;
+
+    font-size: 18px;
+
+    max-width: 800px;
+
+}
+
+
+/* ==========================================================
+   PIPELINE LAYOUT
+========================================================== */
+
+
+.pipeline-container {
+
+    display: grid;
+
+    grid-template-columns: 1fr 380px;
+
+    gap: 60px;
+
+    padding-bottom: 100px;
+
+}
+
+
+.pipeline-left {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+}
+
+
+/* ==========================================================
+   START BUTTON
+========================================================== */
+
+
+#start-pipeline {
+
+    margin-bottom: 50px;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================================================
+   PIPELINE NODE
+========================================================== */
+
+
+.pipeline {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.pipeline-node {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 24px;
+
+    width: 420px;
+
+    background: #161b22;
+
+    border: 1px solid #30363d;
+
+    border-radius: 14px;
+
+    transition: .3s;
+
+}
+
+
+.pipeline-node:hover {
+
+    border-color: #58a6ff;
+
+    transform: translateX(8px);
+
+}
+
+
+/* circle */
+
+
+.node-circle {
+
+    width: 22px;
+
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #30363d;
+
+    flex-shrink: 0;
+
+    transition: .3s;
+
+}
+
+
+/* text */
+
+
+.node-body h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.node-body p {
+
+    color: #8b949e;
+
+    font-size: 14px;
+
+}
+
+
+/* line */
+
+
+.pipeline-line {
+
+    height: 35px;
+
+    width: 2px;
+
+    background: #30363d;
+
+    margin-left: 34px;
+
+}
+
+
+/* ==========================================================
+   STATUS EFFECT
+========================================================== */
+
+
+.pipeline-node.running {
+
+    border-color: #58a6ff;
+
+}
+
+
+.pipeline-node.running .node-circle {
+
+    background: #58a6ff;
+
+    box-shadow:
+        0 0 20px #58a6ff;
+
+}
+
+
+.pipeline-node.success {
+
+    border-color: #238636;
+
+}
+
+
+.pipeline-node.success .node-circle {
+
+    background: #238636;
+
+    box-shadow:
+        0 0 15px #238636;
+
+}
+
+
+/* ==========================================================
+   RIGHT PANEL
+========================================================== */
+
+
+.pipeline-right {
+
+    position: sticky;
+
+    top: 120px;
+
+    height: fit-content;
+
+}
+
+
+.info-panel {
+
+    background: #161b22;
+
+    border: 1px solid #30363d;
+
+    border-radius: 18px;
+
+    padding: 32px;
+
+}
+
+
+.info-panel h2 {
+
+    margin-bottom: 20px;
+
+}
+
+
+.info-panel p {
+
+    color: #8b949e;
+
+    margin-bottom: 20px;
+
+}
+
+
+.info-panel pre {
+
+    background: #0d1117;
+
+    border: 1px solid #30363d;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    overflow-x: auto;
+
+    color: #58a6ff;
+
+    min-height: 120px;
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+
+@media(max-width:900px) {
+
+
+    .pipeline-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .pipeline-node {
+
+        width: 100%;
+
+    }
+
+
+    .pipeline-right {
+
+        position: static;
+
+    }
+
+
+}

@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}
+CI/CD Playground
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="playground-hero">
+
+    <span class="badge">
+        Playground
+    </span>
+
+    <h1>
+        CI/CD Pipeline
+    </h1>
+
+    <p>
+
+        Understand how source code moves from your local
+        machine to production through an automated pipeline.
+
+    </p>
+
+</section>
+
+<section class="pipeline-container">
+
+    <!-- LEFT -->
+
+    <div class="pipeline-left">
+
+        <button id="start-pipeline" class="primary-btn">
+
+            ▶ Start Pipeline
+
+        </button>
+
+        <div class="pipeline">
+
+            <div class="pipeline-node" data-step="commit">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Commit</h3>
+
+                    <p>git commit</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="push">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Push</h3>
+
+                    <p>git push</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="pr">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Pull Request</h3>
+
+                    <p>Create PR</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="actions">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>GitHub Actions</h3>
+
+                    <p>CI Running...</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="ruff">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Ruff</h3>
+
+                    <p>Lint Check</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="pytest">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Pytest</h3>
+
+                    <p>Run Tests</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="deploy">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Deploy</h3>
+
+                    <p>Render</p>
+
+                </div>
+
+            </div>
+
+            <div class="pipeline-line"></div>
+
+            <div class="pipeline-node" data-step="production">
+
+                <div class="node-circle"></div>
+
+                <div class="node-body">
+
+                    <h3>Production</h3>
+
+                    <p>Live Service</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <aside class="pipeline-right">
+
+        <div class="info-panel">
+
+            <h2>
+
+                Step Details
+
+            </h2>
+
+            <p id="step-description">
+
+                Click <strong>Start Pipeline</strong>
+                or select any step to learn
+                what happens during the CI/CD process.
+
+            </p>
+
+            <pre id="step-code">
+
+Waiting for interaction...
+
+            </pre>
+
+        </div>
+
+    </aside>
+
+</section>
+<script src="{{ url_for('static', path='/js/cicd.js') }}"></script>
+{% endblock %}
