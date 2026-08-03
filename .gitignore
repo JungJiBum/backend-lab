@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Virtual Environment
+.venv/
+venv/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
