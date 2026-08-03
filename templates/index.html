@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My FastAPI</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="badge">
+            🚀 FastAPI Portfolio
+        </div>
+
+        <h1>Hello, {{ username }}</h1>
+
+        <p class="sub">
+            Python Backend Developer Portfolio
+        </p>
+
+        <div class="info">
+
+            <div class="box">
+                <span>Age</span>
+                <h3>{{ age }}</h3>
+            </div>
+
+            <div class="box">
+                <span>Server</span>
+                <h3>FastAPI</h3>
+            </div>
+
+            <div class="box">
+                <span>URL</span>
+                <h3>{{ request.url }}</h3>
+            </div>
+
+        </div>
+
+        <a href="/docs" class="btn">
+            Open API Docs →
+        </a>
+
+    </div>
+
+    <script src="/static/js/script.js"></script>
+
+</body>
+
+</html>
