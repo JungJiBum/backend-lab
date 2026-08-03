@@ -29,3 +29,6 @@ jobs:
             - name: Verify FastAPI
               run: |
                   python -c "from app.main import app; print('FastAPI import success!')"
+            - name: Ruff Lint
+              run: |
+                  ruff check .
