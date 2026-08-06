@@ -309,3 +309,35 @@
 
 
 }
+
+/* ==========================================================
+   CI CHILD STEPS
+========================================================== */
+
+
+.pipeline-node.child-step {
+
+    margin-left: 70px;
+
+    width: 350px;
+
+}
+
+.pipeline-node {
+
+    position: relative;
+
+}
+
+.ci-steps {
+
+    margin-left: 70px;
+
+}
+
+
+.child-step {
+
+    width: 350px;
+
+}

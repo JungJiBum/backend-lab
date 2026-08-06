@@ -4,85 +4,158 @@ const pipelineSteps = [
         id: "commit",
         title: "Commit",
         description:
-            "Developer creates a snapshot of source code changes.",
+            "작성한 소스 코드 변경 사항을 Git 커밋으로 저장합니다.",
         code:
-            `git add .
+            `Git Commit
 
-git commit -m "feat: add health endpoint"`
+변경 사항 저장
+
+Example:
+
+git add .
+git commit -m "feature: update application"`
     },
+
 
     {
         id: "push",
         title: "Push",
         description:
-            "Source code is pushed to remote repository.",
+            "로컬 변경 사항을 원격 저장소로 업로드합니다.",
         code:
-            `git push origin main`
+            `Git Push
+
+원격 저장소 반영
+
+Example:
+
+git push origin dev`
     },
+
 
     {
         id: "pr",
         title: "Pull Request",
         description:
-            "A Pull Request is created for code review.",
+            "코드 리뷰와 병합 검토를 위해 Pull Request를 생성합니다.",
         code:
-            `Create Pull Request
+            `Pull Request
 
-main ← feature branch`
+dev branch
+    ↓
+Code Review
+    ↓
+Merge to main`
     },
+
 
     {
         id: "actions",
         title: "GitHub Actions",
         description:
-            "CI workflow starts automatically.",
+            "Pull Request 또는 Merge 이벤트를 기준으로 CI Workflow를 실행합니다.",
         code:
-            `name: CI
+            `CI Workflow
 
-on:
-  pull_request:
+Trigger:
 
-jobs:
-  test:
-    runs-on: ubuntu-latest`
+Pull Request
+
+
+Steps:
+
+1. Checkout Source Code
+
+2. Install Dependencies
+
+3. Run Ruff
+
+4. Run Pytest
+
+
+CI Passed`
     },
+
 
     {
         id: "ruff",
         title: "Ruff",
         description:
-            "Static analysis and code quality check.",
+            "CI Workflow 내부에서 Python 코드 품질 검사를 수행합니다.",
         code:
-            `ruff check .`
+            `Code Quality Check
+
+Command:
+
+ruff check .
+
+ruff format --check
+
+
+Purpose:
+
+- Lint 검사
+- 코드 스타일 검증`
     },
+
 
     {
         id: "pytest",
         title: "Pytest",
         description:
-            "Automated tests are executed.",
+            "CI Workflow 내부에서 자동화 테스트를 수행합니다.",
         code:
-            `pytest tests/`
+            `Automated Test
+
+Command:
+
+pytest tests/
+
+
+Purpose:
+
+- 기능 검증
+- Regression 방지`
     },
+
 
     {
         id: "deploy",
         title: "Deploy",
         description:
-            "Application is deployed to production.",
+            "CI 검증 완료 후 운영 환경에 애플리케이션을 배포합니다.",
         code:
-            `Render Deployment
+            `CD Deployment
 
-Build → Deploy`
+Trigger:
+
+Merge main branch
+
+
+Process:
+
+Build
+ ↓
+Deploy
+ ↓
+Health Check`
     },
+
 
     {
         id: "production",
         title: "Production",
         description:
-            "Live service is running.",
+            "배포 완료 후 운영 환경에서 서비스를 제공합니다.",
         code:
-            `GET /health
+            `Production Service
+
+Health Check:
+
+GET /health
+
+
+Response:
 
 {
   "status": "ok"
@@ -90,7 +163,6 @@ Build → Deploy`
     }
 
 ];
-
 
 // elements
 
