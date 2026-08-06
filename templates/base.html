@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
@@ -7,97 +7,183 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <title>
+
         {% block title %}
-        Backend Engineering Playground
+        Jibum Jung | Backend Engineer
         {% endblock %}
+
     </title>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
 
+
     {% block extra_css %}
     {% endblock %}
+
+
 </head>
+
 
 <body>
 
-    <!-- ================= HEADER ================= -->
 
     <header class="navbar">
+
 
         <div class="logo">
 
             <a href="/">
-                Backend Engineering Playground
+                Jibum Jung
             </a>
 
         </div>
 
+
+
         <nav>
 
-            <a href="/">Home</a>
 
-            <a href="#playgrounds">Playgrounds</a>
+            <a href="/#about">
+                About
+            </a>
 
-            <a href="#projects">Projects</a>
 
-            <a href="#journey">Journey</a>
+            <a href="/#experience">
+                Experience
+            </a>
+
+            <a href="/#tech">
+                Tech Stack
+            </a>
+
+            <a href="/#playground">
+                Playground
+            </a>
+
+
+            <a href="https://github.com/JungJiBum" target="_blank">
+                GitHub
+            </a>
+
 
         </nav>
 
+
     </header>
 
-    <!-- ================= MAIN ================= -->
+
+
+
 
     <main>
+
 
         {% block content %}
         {% endblock %}
 
+
     </main>
 
-    <!-- ================= FOOTER ================= -->
+
+
+
 
     <footer>
 
+
         <div class="footer-container">
 
-            <p>
+
+            <div class="footer-copy">
 
                 © 2026 Jibum Jung
 
-            </p>
+            </div>
+
+
 
             <div class="footer-links">
 
-                <a href="#">
+
+                <a href="https://github.com/JungJiBum" target="_blank">
+
                     GitHub
+
                 </a>
 
-                <a href="#">
-                    Portfolio
-                </a>
 
-                <a href="#">
+
+                <button type="button" class="contact-trigger" data-contact-open>
+
                     Contact
-                </a>
+
+                </button>
+
 
             </div>
 
+
         </div>
+
 
     </footer>
 
-    <!-- ================= SCRIPT ================= -->
+    <div id="contact-modal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-title"
+        aria-hidden="true">
+
+
+        <div class="contact-box" tabindex="-1">
+
+
+            <button type="button" class="contact-close" data-contact-close aria-label="Contact 모달 닫기">
+
+                ×
+
+            </button>
+
+
+
+            <span class="contact-label">CONTACT</span>
+
+
+            <p class="contact-name">
+                정지범 <span>(Jibum Jung)</span>
+            </p>
+
+
+
+            <a class="contact-email" href="mailto:2377325@gmail.com">
+
+                2377325@gmail.com
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
 
     <script src="{{ url_for('static', path='/js/script.js') }}">
     </script>
+
+
 
 </body>
 

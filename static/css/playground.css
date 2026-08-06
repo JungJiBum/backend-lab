@@ -68,7 +68,41 @@
 
     margin-bottom: 50px;
 
+    padding: 12px 24px;
+
+    border-radius: 10px;
+
+    border: 1px solid #30363d;
+
+    background: #238636;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
     cursor: pointer;
+
+    transition: .25s;
+
+}
+
+
+
+#start-pipeline:hover {
+
+    background: #2ea043;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+#start-pipeline:active {
+
+    transform: translateY(0);
 
 }
 
@@ -307,5 +341,37 @@
 
     }
 
+
+}
+
+/* ==========================================================
+   CI CHILD STEPS
+========================================================== */
+
+
+.pipeline-node.child-step {
+
+    margin-left: 70px;
+
+    width: 350px;
+
+}
+
+.pipeline-node {
+
+    position: relative;
+
+}
+
+.ci-steps {
+
+    margin-left: 70px;
+
+}
+
+
+.child-step {
+
+    width: 350px;
 
 }

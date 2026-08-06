@@ -1,347 +1,581 @@
 {% extends "base.html" %}
 
-{% block title %}
-Backend Engineering Playground
-{% endblock %}
 
 {% block content %}
 
-<!-- =======================================================
- HERO
-======================================================== -->
+
+<!-- HERO -->
 
 <section class="hero">
 
+
     <div class="hero-content">
 
+
         <span class="badge">
-            Python Backend Engineer
+            Python Backend · Platform Engineer
         </span>
 
         <h1>
-
-            Backend
-            Engineering
-            Playground
-
+            Backend 서비스와
+            데이터 플랫폼을 구축합니다.
         </h1>
 
-        <p class="hero-description">
-
-            Hi, I'm Jibum.
-
-            <br><br>
-
-            I enjoy building backend systems,
-            automating development workflows,
-            and transforming engineering concepts
-            into interactive experiences.
-
+        <p>
+            Python 기반 Backend 개발과
+            데이터 플랫폼 구축·운영 경험을 바탕으로
+            서비스 안정화와 운영 자동화를 수행합니다.
         </p>
+
+
+
 
         <div class="hero-buttons">
 
-            <a href="#playgrounds" class="primary-btn">
 
-                Explore Playgrounds
+            <a href="#experience" class="btn primary">
+
+                경험 보기
+
+            </a>
+
+
+
+            <a href="#playground" class="btn secondary">
+
+                Playground
 
             </a>
 
-            <a href="#about" class="secondary-btn">
-
-                About Me
-
-            </a>
 
         </div>
 
+
     </div>
+
 
 </section>
 
-<!-- =======================================================
- ABOUT
-======================================================== -->
 
-<section id="about" class="section">
 
-    <div class="section-header">
 
-        <span>ABOUT</span>
+
+
+
+<!-- ABOUT -->
+
+
+<section id="about" class="about">
+
+
+
+    <div class="section-title">
+
+
+        <span>
+            ABOUT
+        </span>
+
+
 
         <h2>
-
-            More Than Code
-
+            운영까지 고려하는 Backend Engineer입니다.
         </h2>
+
 
     </div>
 
-    <p class="about-text">
+    <div class="about-box">
 
-        This website is not just a portfolio.
+        <p>
+            약 3년간 Python 기반 Backend 개발과 데이터 플랫폼 구축 및 운영을 경험했습니다.
+            <br><br>
+            LRS(Learning Record Store) 기반 학습 데이터 플랫폼을 구축하고,
+            Django/Flask 기반 서비스 개발부터 Docker/Linux 환경 운영,
+            Elasticsearch, RabbitMQ, PostgreSQL 기반 시스템 관리와 장애 분석 업무를 수행했습니다.
+            고객사 구축 환경과 운영 이슈 대응을 통해 서비스 안정화 경험을 쌓았습니다.
+        </p>
 
-        It is a place where I demonstrate
-        backend engineering concepts through
-        interactive playgrounds.
 
-        <br><br>
+    </div>
 
-        My professional experience is documented
-        in my portfolio,
-        while this playground showcases
-        what I personally build,
-        study,
-        and continuously improve.
-
-    </p>
 
 </section>
 
-<!-- =======================================================
- PLAYGROUND
-======================================================== -->
 
-<section id="playgrounds" class="section">
 
-    <div class="section-header">
 
-        <span>PLAYGROUNDS</span>
+
+
+
+
+<!-- EXPERIENCE -->
+
+
+<section id="experience" class="section">
+
+    <div class="section-title">
+        <span>EXPERIENCE</span>
+        <h2>주요 경험</h2>
+        <p>
+            Backend 개발부터 데이터 플랫폼 구축, 운영 자동화까지 경험했습니다.
+        </p>
+    </div>
+
+
+    <div class="experience-grid">
+
+
+        <div class="experience-card">
+
+            <h3>Backend Development</h3>
+
+            <p>
+                Python 기반 Backend 서비스 개발
+            </p>
+
+            <ul>
+                <li>Django / Flask 기반 API 개발</li>
+                <li>서비스 기능 개선 및 유지보수</li>
+                <li>운영 환경 문제 분석 및 개선</li>
+            </ul>
+
+        </div>
+
+
+
+        <div class="experience-card">
+
+            <h3>LRS Platform Engineering</h3>
+
+            <p>
+                이벤트 기반 학습 데이터 플랫폼 구축 및 운영
+            </p>
+
+            <ul>
+                <li>LRS(Learning Record Store) 구축 및 운영</li>
+                <li>데이터 처리 Workflow 구성</li>
+                <li>PostgreSQL / RabbitMQ / Elasticsearch 운영</li>
+            </ul>
+
+        </div>
+
+
+
+        <div class="experience-card">
+
+            <h3>Service Deployment</h3>
+
+            <p>
+                다양한 고객 환경의 서비스 구축 및 배포
+            </p>
+
+            <ul>
+                <li>교육기관 및 기업 고객사 구축 경험</li>
+                <li>폐쇄망 환경 설치 및 운영</li>
+                <li>Docker 기반 서비스 배포</li>
+            </ul>
+
+        </div>
+
+
+
+        <div class="experience-card">
+
+            <h3>Infrastructure & DevOps</h3>
+
+            <p>
+                서비스 운영 환경 구성 및 자동화
+            </p>
+
+            <ul>
+                <li>Linux / Nginx / SSL 환경 운영</li>
+                <li>Jenkins 기반 배포 환경 구성</li>
+                <li>Docker Compose 기반 서비스 관리</li>
+            </ul>
+
+        </div>
+
+
+
+        <div class="experience-card">
+
+            <h3>Monitoring & Troubleshooting</h3>
+
+            <p>
+                서비스 안정화와 장애 분석 경험
+            </p>
+
+            <ul>
+                <li>Prometheus / Grafana 기반 모니터링</li>
+                <li>Elasticsearch / RabbitMQ 장애 분석</li>
+                <li>성능 개선 및 운영 안정화</li>
+            </ul>
+
+        </div>
+
+
+
+        <div class="experience-card">
+
+            <h3>Data Workflow & Automation</h3>
+
+            <p>
+                데이터 처리 및 반복 업무 자동화
+            </p>
+
+            <ul>
+                <li>Airflow DAG 개발 및 Workflow 운영</li>
+                <li>JupyterHub / JupyterLab 환경 구성</li>
+                <li>Playwright 기반 운영 자동화</li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- TECH STACK -->
+
+
+<section id="tech" class="tech">
+
+
+
+    <div class="section-title">
+
+
+        <span>
+            TECH STACK
+        </span>
+
+
 
         <h2>
-
-            Learn Through Interaction
-
+            기술 스택
         </h2>
 
-    </div>
-
-    <div class="playground-grid">
-
-        <a href="/playground/fastapi" class="playground-card">
-
-            <h3>
-
-                🚀 FastAPI
-
-            </h3>
-
-            <p>
-
-                Request Flow
-
-                <br>
-
-                Router
-
-                <br>
-
-                Dependency Injection
-
-            </p>
-
-        </a>
-
-        <a href="/playground/cicd" class="playground-card">
-
-            <h3>
-
-                ⚙ CI/CD
-
-            </h3>
-
-            <p>
-
-                Commit
-
-                →
-
-                Push
-
-                →
-
-                Pull Request
-
-                →
-
-                GitHub Actions
-
-                →
-
-                Deploy
-
-            </p>
-
-        </a>
-
-        <a href="/playground/docker" class="playground-card">
-
-            <h3>
-
-                🐳 Docker
-
-            </h3>
-
-            <p>
-
-                Dockerfile
-
-                →
-
-                Image
-
-                →
-
-                Container
-
-            </p>
-
-        </a>
-
-        <a href="/playground/monitoring" class="playground-card">
-
-            <h3>
-
-                📊 Monitoring
-
-            </h3>
-
-            <p>
-
-                Health Check
-
-                →
-
-                Metrics
-
-                →
-
-                Grafana
-
-            </p>
-
-        </a>
-
-        <a href="/playground/database" class="playground-card">
-
-            <h3>
-
-                🗄 Database
-
-            </h3>
-
-            <p>
-
-                PostgreSQL
-
-                Redis
-
-                RabbitMQ
-
-                Elasticsearch
-
-            </p>
-
-        </a>
-
-        <a href="/playground/architecture" class="playground-card">
-
-            <h3>
-
-                🏗 Architecture
-
-            </h3>
-
-            <p>
-
-                Browser
-
-                →
-
-                FastAPI
-
-                →
-
-                Database
-
-            </p>
-
-        </a>
 
     </div>
 
-</section>
+    <div class="tech-group">
 
-<!-- =======================================================
- LINKS
-======================================================== -->
 
-<section class="section">
-
-    <div class="section-header">
-
-        <span>LINKS</span>
-
-        <h2>
-
-            Explore More
-
-        </h2>
-
-    </div>
-
-    <div class="playground-grid">
-
-        <a href="https://github.com/" target="_blank" class="playground-card">
-
+        <div>
             <h3>
-
-                🐙 GitHub
-
+                Backend
             </h3>
 
             <p>
-
-                Personal Projects
-
-                <br>
-
-                Source Code
-
-                <br>
-
-                Learning History
-
+                Python · Django · Flask · FastAPI
             </p>
+        </div>
 
-        </a>
 
-        <a href="#" class="playground-card">
 
+        <div>
             <h3>
-
-                📄 Portfolio
-
+                Database & Messaging
             </h3>
 
             <p>
-
-                Bubblecon Experience
-
-                <br>
-
-                Backend Projects
-
-                <br>
-
-                Career Summary
-
+                PostgreSQL · Redis · RabbitMQ · Elasticsearch
             </p>
+        </div>
 
-        </a>
+
+
+        <div>
+            <h3>
+                Data Workflow
+            </h3>
+
+            <p>
+                Celery · Celery Beat · Airflow · JupyterHub · JupyterLab
+            </p>
+        </div>
+
+
+
+        <div>
+            <h3>
+                Infrastructure
+            </h3>
+
+            <p>
+                Docker · Docker Compose · Linux · Nginx · SSL/TLS · Harbor
+            </p>
+        </div>
+
+
+
+        <div>
+            <h3>
+                Monitoring
+            </h3>
+
+            <p>
+                Prometheus · Grafana
+            </p>
+        </div>
+
+
+
+        <div>
+            <h3>
+                Cloud & Tools
+            </h3>
+
+            <p>
+                AWS · NCP · Jenkins · Git · Jira · Confluence · Playwright · Locust
+            </p>
+        </div>
+
 
     </div>
 
-</section>
+    <!-- PLAYGROUND -->
 
-{% endblock %}
+
+    <section id="playground" class="playground">
+
+
+        <div class="section-title">
+
+
+            <span>
+                PLAYGROUND
+            </span>
+
+
+
+            <h2>
+                기술의 동작 원리를 직접 구현하고 시각화합니다.
+            </h2>
+
+
+
+            <p>
+                실무 경험과 개인 학습을 기반으로
+                Backend · Platform Engineering 기술을 Interactive Demo 형태로 구성했습니다.
+            </p>
+
+
+        </div>
+
+
+
+
+        <!-- Engineering Experience -->
+
+
+        <div class="playground-category">
+
+
+            <h3>
+                Engineering Experience
+            </h3>
+
+
+            <p class="category-description">
+                서비스 구축과 운영 과정에서 경험한 시스템 흐름을 재구성했습니다.
+            </p>
+
+
+
+            <div class="playground-grid">
+
+
+
+                <a href="/playground/lrs" class="playground-card">
+
+                    <h3>
+                        LRS Event Pipeline
+                    </h3>
+
+
+                    <p>
+                        학습 이벤트 생성부터 저장까지
+                        데이터 처리 흐름을 시각화합니다.
+                    </p>
+
+                </a>
+
+
+
+
+
+                <a href="/playground/cicd" class="playground-card">
+
+                    <h3>
+                        CI/CD Pipeline
+                    </h3>
+
+
+                    <p>
+                        Commit부터 배포까지
+                        자동화된 개발 흐름을 보여줍니다.
+                    </p>
+
+                </a>
+
+
+
+
+
+                <a href="/playground/ansible" class="playground-card">
+
+                    <h3>
+                        Infrastructure Automation
+                    </h3>
+
+
+                    <p>
+                        Ansible 기반 서버 구성 자동화
+                        과정을 시각화합니다.
+                    </p>
+
+                </a>
+
+
+
+
+
+                <a href="/playground/monitoring" class="playground-card">
+
+                    <h3>
+                        Monitoring Pipeline
+                    </h3>
+
+
+                    <p>
+                        Metric 수집부터 Dashboard까지
+                        운영 흐름을 보여줍니다.
+                    </p>
+
+                </a>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- Engineering Lab -->
+
+
+        <div class="playground-category">
+
+
+            <h3>
+                Engineering Lab
+            </h3>
+
+
+            <p class="category-description">
+                개인적으로 학습하고 구현한 기술 실험 공간입니다.
+            </p>
+
+
+
+            <div class="playground-grid">
+
+
+
+                <a href="/playground/fastapi" class="playground-card">
+
+
+                    <h3>
+                        FastAPI Service
+                    </h3>
+
+
+                    <p>
+                        API Request Flow와
+                        Backend 구조를 실험합니다.
+                    </p>
+
+
+                </a>
+
+
+
+
+
+                <a href="/playground/speech" class="playground-card">
+
+
+                    <h3>
+                        Speech AI
+                    </h3>
+
+
+                    <p>
+                        STT/TTS 기반
+                        음성 처리 Workflow를 실험합니다.
+                    </p>
+
+
+                </a>
+
+
+
+
+
+                <a href="/playground/opencv" class="playground-card">
+
+
+                    <h3>
+                        Computer Vision
+                    </h3>
+
+
+                    <p>
+                        OpenCV 기반
+                        이미지 처리 기술을 실험합니다.
+                    </p>
+
+
+                </a>
+
+
+
+
+
+                <a href="/playground/automation" class="playground-card">
+
+
+                    <h3>
+                        Automation Lab
+                    </h3>
+
+
+                    <p>
+                        Python 기반 자동화와
+                        데이터 수집 실험입니다.
+                    </p>
+
+
+                </a>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+    {% endblock %}
