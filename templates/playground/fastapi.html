@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Portfolio Platform | Playground{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="playground-hero fastapi-hero">
+    <span class="badge">Engineering Lab</span>
+    <h1>Portfolio Platform</h1>
+    <p>FastAPI 기반으로 구축한 개인 포트폴리오 플랫폼입니다. Backend 구조 설계부터 Template Rendering, Static Resource 관리, CI 기반 검증과 Render 배포 환경까지 직접 구성했습니다.</p>
+</section>
+
+<section class="fastapi-demo" aria-labelledby="fastapi-flow-title">
+    <div class="fastapi-toolbar">
+        <div><span class="fastapi-eyebrow">SERVICE ARCHITECTURE</span><h2 id="fastapi-flow-title">Source to Production</h2></div>
+        <button id="start-request-flow" class="fastapi-primary-button" type="button"><span aria-hidden="true">▶</span> Run Platform Flow</button>
+    </div>
+
+    <div id="fastapi-lifecycle" class="fastapi-lifecycle" aria-label="Portfolio platform service flow">
+        <button class="fastapi-node is-selected" type="button" data-step="source" aria-pressed="true"><span class="fastapi-node-number">01</span><strong>Source Code</strong><small>Application · UI</small><span class="fastapi-node-status">READY</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="application" aria-pressed="false"><span class="fastapi-node-number">02</span><strong>FastAPI App</strong><small>Application Entry</small><span class="fastapi-node-status">WAITING</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="router" aria-pressed="false"><span class="fastapi-node-number">03</span><strong>Router</strong><small>Endpoint Mapping</small><span class="fastapi-node-status">WAITING</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="template" aria-pressed="false"><span class="fastapi-node-number">04</span><strong>Template</strong><small>Jinja2 Rendering</small><span class="fastapi-node-status">WAITING</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="static" aria-pressed="false"><span class="fastapi-node-number">05</span><strong>Static Resource</strong><small>CSS · JavaScript</small><span class="fastapi-node-status">WAITING</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="ci" aria-pressed="false"><span class="fastapi-node-number">06</span><strong>CI Verification</strong><small>Ruff · Pytest</small><span class="fastapi-node-status">WAITING</span></button>
+        <div class="fastapi-connector" aria-hidden="true"><span class="fastapi-request-packet"></span></div>
+        <button class="fastapi-node" type="button" data-step="deployment" aria-pressed="false"><span class="fastapi-node-number">07</span><strong>Deployment</strong><small>Render Hosting</small><span class="fastapi-node-status">WAITING</span></button>
+    </div>
+
+    <div class="fastapi-content-grid">
+        <aside class="fastapi-detail" aria-live="polite">
+            <span class="fastapi-eyebrow">STEP DETAILS</span>
+            <h2 id="fastapi-detail-title">Source Code</h2>
+            <div class="fastapi-detail-block"><h3>역할</h3><p id="fastapi-detail-role">포트폴리오 Backend와 Interactive Playground의 구현 코드를 관리합니다.</p></div>
+            <div class="fastapi-detail-block"><h3>Repository Detail</h3><ul id="fastapi-detail-list"></ul></div>
+            <div class="fastapi-code-header"><span>Repository Structure</span><i></i></div>
+            <pre id="fastapi-detail-code"><code>app/
+templates/
+static/
+tests/</code></pre>
+            <p id="fastapi-live-status" class="fastapi-live-status">단계를 선택하거나 전체 Platform Flow를 실행해 보세요.</p>
+        </aside>
+
+        <section class="fastapi-verification" aria-labelledby="verification-title">
+            <span class="fastapi-eyebrow">IMPLEMENTED PLATFORM</span>
+            <h2 id="verification-title">Repository Structure</h2>
+            <p>현재 포트폴리오를 구성하는 실제 디렉터리와 연결 관계입니다.</p>
+            <div class="fastapi-platform-tree">
+                <span><strong>app/</strong><small>FastAPI entry · routers</small></span>
+                <span><strong>templates/</strong><small>Jinja2 pages · Playground UI</small></span>
+                <span><strong>static/</strong><small>CSS · JavaScript assets</small></span>
+                <span><strong>tests/</strong><small>Endpoint verification</small></span>
+                <span><strong>.github/</strong><small>CI workflow</small></span>
+            </div>
+            <div class="fastapi-boundary-note"><strong>Platform Scope</strong><p>현재 저장소에서 확인되는 포트폴리오 서비스 구성과 요청에 명시된 Render 배포 환경만 표현합니다.</p></div>
+        </section>
+    </div>
+</section>
+
+<script src="{{ url_for('static', path='/js/fastapi.js') }}"></script>
+{% endblock %}

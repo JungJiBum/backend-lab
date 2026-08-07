@@ -1999,3 +1999,87 @@ body.modal-open {
     .monitoring-packet { animation-duration: .01ms !important; }
     .monitoring-server-card, .monitoring-service-card, .monitoring-modal-card { transition: none; }
 }
+
+/* ==========================================================
+   FASTAPI SERVICE LAB
+========================================================== */
+
+.fastapi-hero { padding-bottom: 48px; }
+.fastapi-demo { padding-bottom: 120px; }
+.fastapi-toolbar { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.fastapi-toolbar h2 { margin-top: 5px; font-size: 28px; }
+.fastapi-eyebrow { color: #58a6ff; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; }
+.fastapi-primary-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 10px 18px; border: 1px solid #2ea043; border-radius: 9px; color: #f0f6fc; background: #238636; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: .2s ease; }
+.fastapi-primary-button:hover:not(:disabled) { background: #2ea043; transform: translateY(-1px); }
+.fastapi-primary-button:disabled { cursor: progress; opacity: .65; }
+
+.fastapi-lifecycle { display: grid; grid-template-columns: repeat(6, minmax(112px, 1fr) 24px) minmax(112px, 1fr); align-items: stretch; padding: 26px; overflow-x: auto; border: 1px solid #21262d; border-radius: 18px; background: radial-gradient(circle at 50% 0, rgba(56, 139, 253, .08), transparent 38%), #0b0f14; }
+.fastapi-node { display: grid; grid-template-columns: 28px 1fr; grid-template-rows: auto auto auto; gap: 5px 8px; min-width: 120px; min-height: 132px; padding: 14px 12px; border: 1px solid #30363d; border-radius: 11px; color: #f0f6fc; background: #161b22; font: inherit; text-align: left; cursor: pointer; transition: .2s ease; }
+.fastapi-node:hover, .fastapi-node.is-selected { border-color: #58a6ff; background: #18202a; transform: translateY(-2px); }
+.fastapi-node:focus-visible { outline: 2px solid #58a6ff; outline-offset: 3px; }
+.fastapi-node-number { grid-row: 1 / 3; display: grid; place-items: center; align-self: start; width: 27px; height: 27px; border: 1px solid #30363d; border-radius: 7px; color: #8b949e; background: #0d1117; font-size: 8px; font-weight: 800; }
+.fastapi-node strong { align-self: end; font-size: 12px; line-height: 1.35; }
+.fastapi-node small { color: #8b949e; font-size: 9px; line-height: 1.4; }
+.fastapi-node-status { grid-column: 1 / 3; align-self: end; padding-top: 8px; border-top: 1px solid #30363d; color: #6e7681; font-size: 8px; font-weight: 700; overflow-wrap: anywhere; }
+.fastapi-node.is-active { border-color: #58a6ff; background: rgba(56, 139, 253, .1); }
+.fastapi-node.is-active .fastapi-node-number, .fastapi-node.is-active .fastapi-node-status { color: #58a6ff; }
+.fastapi-node.is-complete { border-color: rgba(46, 160, 67, .7); }
+.fastapi-node.is-complete .fastapi-node-number, .fastapi-node.is-complete .fastapi-node-status { color: #3fb950; }
+.fastapi-connector { position: relative; align-self: center; height: 2px; background: #30363d; }
+.fastapi-connector::after { content: ""; position: absolute; top: -3px; right: -1px; width: 6px; height: 6px; border-top: 2px solid #484f58; border-right: 2px solid #484f58; transform: rotate(45deg); }
+.fastapi-connector.is-complete { background: #238636; }
+.fastapi-request-packet { position: absolute; top: 50%; left: 0; z-index: 2; width: 10px; height: 10px; border: 2px solid #79c0ff; border-radius: 3px; background: #0d1117; box-shadow: 0 0 12px rgba(88, 166, 255, .9); opacity: 0; transform: translate(-50%, -50%) rotate(45deg); }
+.fastapi-connector.is-moving .fastapi-request-packet { animation: fastapi-packet-right .5s ease-in-out forwards; }
+
+.fastapi-content-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: 28px; margin-top: 28px; }
+.fastapi-detail, .fastapi-verification { padding: 28px; border: 1px solid #30363d; border-radius: 16px; background: #161b22; box-shadow: 0 16px 40px rgba(0, 0, 0, .14); }
+.fastapi-detail h2, .fastapi-verification h2 { margin: 8px 0 18px; font-size: 24px; }
+.fastapi-detail-block { margin-top: 15px; padding-left: 13px; border-left: 2px solid #30363d; }
+.fastapi-detail-block h3 { margin-bottom: 6px; color: #58a6ff; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.fastapi-detail-block p, .fastapi-detail-block li { color: #8b949e; font-size: 12px; line-height: 1.65; }
+.fastapi-detail-block ul { padding-left: 17px; }
+.fastapi-code-header { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; padding: 9px 13px; border: 1px solid #30363d; border-bottom: 0; border-radius: 9px 9px 0 0; color: #8b949e; background: #21262d; font-size: 10px; font-weight: 600; }
+.fastapi-code-header i { width: 7px; height: 7px; border-radius: 50%; background: #3fb950; box-shadow: 0 0 8px rgba(63, 185, 80, .65); }
+.fastapi-detail pre { min-height: 145px; margin: 0; padding: 17px; border: 1px solid #30363d; border-radius: 0 0 9px 9px; color: #79c0ff; background: #0d1117; font-size: 11px; line-height: 1.6; white-space: pre-wrap; }
+.fastapi-live-status { margin-top: 16px; padding-top: 14px; border-top: 1px solid #30363d; color: #8b949e; font-size: 11px; }
+.fastapi-verification > p { color: #8b949e; font-size: 13px; line-height: 1.6; }
+.fastapi-ci-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr) auto) minmax(0, 1fr); align-items: center; gap: 7px; margin: 24px 0; }
+.fastapi-ci-flow span { display: grid; place-items: center; min-height: 62px; padding: 9px; border: 1px solid #30363d; border-radius: 9px; color: #f0f6fc; background: #0d1117; font-size: 9px; font-weight: 600; text-align: center; }
+.fastapi-ci-flow i { color: #58a6ff; font-style: normal; }
+.fastapi-repo-note, .fastapi-boundary-note { padding: 15px; border: 1px solid #30363d; border-radius: 9px; background: #0d1117; }
+.fastapi-repo-note strong, .fastapi-boundary-note strong { color: #58a6ff; font-size: 10px; }
+.fastapi-repo-note p, .fastapi-boundary-note p { margin-top: 7px; color: #8b949e; font-size: 11px; line-height: 1.6; }
+.fastapi-repo-note code { color: #79c0ff; }
+.fastapi-boundary-note { margin-top: 12px; }
+.fastapi-boundary-note strong { color: #d29922; }
+.fastapi-platform-tree { display: grid; gap: 8px; margin: 22px 0; }
+.fastapi-platform-tree span { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 11px 13px; border: 1px solid #30363d; border-radius: 8px; background: #0d1117; }
+.fastapi-platform-tree strong { color: #79c0ff; font-family: monospace; font-size: 11px; }
+.fastapi-platform-tree small { color: #8b949e; font-size: 9px; text-align: right; }
+
+@keyframes fastapi-packet-right { 0% { left: 0; opacity: 0; } 12%, 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+
+@media (max-width: 900px) {
+    .fastapi-lifecycle { grid-template-columns: 1fr; gap: 0; overflow: visible; }
+    .fastapi-node { width: 100%; min-height: 105px; }
+    .fastapi-connector { justify-self: center; width: 2px; height: 32px; }
+    .fastapi-connector::after { top: auto; right: -3px; bottom: -1px; border-top: 0; border-right: 2px solid #484f58; border-bottom: 2px solid #484f58; transform: rotate(45deg); }
+    .fastapi-request-packet { top: 0; left: 50%; }
+    .fastapi-connector.is-moving .fastapi-request-packet { animation-name: fastapi-packet-down; }
+    .fastapi-content-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+    .fastapi-toolbar { align-items: stretch; flex-direction: column; }
+    .fastapi-lifecycle { padding: 18px 14px; }
+    .fastapi-detail, .fastapi-verification { padding: 22px 18px; }
+    .fastapi-ci-flow { grid-template-columns: 1fr; }
+    .fastapi-ci-flow i { justify-self: center; transform: rotate(90deg); }
+}
+
+@keyframes fastapi-packet-down { 0% { top: 0; opacity: 0; } 12%, 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+    .fastapi-request-packet { animation-duration: .01ms !important; }
+    .fastapi-node { transition: none; }
+}
