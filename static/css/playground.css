@@ -2013,13 +2013,13 @@ body.modal-open {
 .fastapi-primary-button:hover:not(:disabled) { background: #2ea043; transform: translateY(-1px); }
 .fastapi-primary-button:disabled { cursor: progress; opacity: .65; }
 
-.fastapi-lifecycle { display: grid; grid-template-columns: repeat(6, minmax(112px, 1fr) 24px) minmax(112px, 1fr); align-items: stretch; padding: 26px; overflow-x: auto; border: 1px solid #21262d; border-radius: 18px; background: radial-gradient(circle at 50% 0, rgba(56, 139, 253, .08), transparent 38%), #0b0f14; }
-.fastapi-node { display: grid; grid-template-columns: 28px 1fr; grid-template-rows: auto auto auto; gap: 5px 8px; min-width: 120px; min-height: 132px; padding: 14px 12px; border: 1px solid #30363d; border-radius: 11px; color: #f0f6fc; background: #161b22; font: inherit; text-align: left; cursor: pointer; transition: .2s ease; }
-.fastapi-node:hover, .fastapi-node.is-selected { border-color: #58a6ff; background: #18202a; transform: translateY(-2px); }
+.fastapi-lifecycle { display: grid; grid-template-columns: repeat(6, minmax(112px, 1fr) 18px) minmax(112px, 1fr); align-items: stretch; padding: 26px; overflow-x: auto; border: 1px solid #21262d; border-radius: 18px; background: radial-gradient(circle at 50% 0, rgba(56, 139, 253, .08), transparent 38%), #0b0f14; }
+.fastapi-node { display: grid; grid-template-columns: 27px minmax(0, 1fr); grid-template-rows: auto auto 1fr; gap: 5px 6px; min-width: 0; min-height: 132px; padding: 14px 10px; border: 1px solid #30363d; border-radius: 11px; color: #f0f6fc; background: #161b22; font: inherit; text-align: left; cursor: pointer; transition: .2s ease; }
+.fastapi-node:hover, .fastapi-node.is-selected { border-color: #58a6ff; background: #18202a; }
 .fastapi-node:focus-visible { outline: 2px solid #58a6ff; outline-offset: 3px; }
-.fastapi-node-number { grid-row: 1 / 3; display: grid; place-items: center; align-self: start; width: 27px; height: 27px; border: 1px solid #30363d; border-radius: 7px; color: #8b949e; background: #0d1117; font-size: 8px; font-weight: 800; }
-.fastapi-node strong { align-self: end; font-size: 12px; line-height: 1.35; }
-.fastapi-node small { color: #8b949e; font-size: 9px; line-height: 1.4; }
+.fastapi-node-number { grid-row: 1; display: grid; place-items: center; align-self: start; width: 27px; height: 27px; border: 1px solid #30363d; border-radius: 7px; color: #8b949e; background: #0d1117; font-size: 8px; font-weight: 800; }
+.fastapi-node strong { grid-column: 2; grid-row: 1; align-self: start; min-width: 0; min-height: 30px; font-size: 11px; line-height: 1.35; overflow-wrap: normal; }
+.fastapi-node small { grid-column: 2; grid-row: 2; color: #8b949e; font-size: 9px; line-height: 1.4; }
 .fastapi-node-status { grid-column: 1 / 3; align-self: end; padding-top: 8px; border-top: 1px solid #30363d; color: #6e7681; font-size: 8px; font-weight: 700; overflow-wrap: anywhere; }
 .fastapi-node.is-active { border-color: #58a6ff; background: rgba(56, 139, 253, .1); }
 .fastapi-node.is-active .fastapi-node-number, .fastapi-node.is-active .fastapi-node-status { color: #58a6ff; }
