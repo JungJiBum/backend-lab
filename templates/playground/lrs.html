@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}LRS Event Pipeline | Playground{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="playground-hero lrs-hero">
+    <span class="badge">Interactive Playground</span>
+    <h1>LRS Event Pipeline</h1>
+    <p>xAPI 학습 이벤트가 LRS에 도착해 검증되고 원본 데이터로 저장되는 과정을 직접 실행해 보세요.</p>
+</section>
+
+<section class="lrs-demo" aria-labelledby="lrs-demo-title">
+    <div class="lrs-demo-main">
+        <div class="lrs-toolbar">
+            <div>
+                <span class="lrs-eyebrow">MAIN FLOW</span>
+                <h2 id="lrs-demo-title">Statement Ingestion</h2>
+            </div>
+            <div class="lrs-controls">
+                <label class="lrs-failure-toggle">
+                    <input id="simulate-failure" type="checkbox">
+                    <span class="lrs-toggle-track" aria-hidden="true"><span></span></span>
+                    Simulate validation failure
+                </label>
+                <button id="generate-event" class="lrs-primary-button" type="button">
+                    <span aria-hidden="true">▶</span> Generate Event
+                </button>
+            </div>
+        </div>
+
+        <div id="lrs-pipeline" class="lrs-pipeline" aria-label="LRS statement ingestion pipeline">
+            <button class="lrs-node is-selected" type="button" data-step="event" aria-pressed="true">
+                <span class="lrs-node-icon" aria-hidden="true">01</span>
+                <span class="lrs-node-copy">
+                    <strong>Learning Event</strong>
+                    <small>학습 이벤트 생성</small>
+                </span>
+                <span class="lrs-node-status">Ready</span>
+            </button>
+
+            <div class="lrs-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+
+            <button class="lrs-node" type="button" data-step="receiver" aria-pressed="false">
+                <span class="lrs-node-icon" aria-hidden="true">02</span>
+                <span class="lrs-node-copy">
+                    <strong>LRS Receiver</strong>
+                    <small>외부 Statement 수신</small>
+                </span>
+                <span class="lrs-node-status">Waiting</span>
+            </button>
+
+            <div class="lrs-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+
+            <button class="lrs-node" type="button" data-step="validation" aria-pressed="false">
+                <span class="lrs-node-icon" aria-hidden="true">03</span>
+                <span class="lrs-node-copy">
+                    <strong>xAPI Validation</strong>
+                    <small>xAPI 필수 필드 검증</small>
+                </span>
+                <span class="lrs-node-status">Waiting</span>
+            </button>
+
+            <div class="lrs-branch" aria-label="Validation result">
+                <div class="lrs-branch-path lrs-pass-path" data-path="pass">
+                    <div class="lrs-branch-line" aria-hidden="true"><span class="lrs-packet"></span></div>
+                    <span class="lrs-result-badge">PASS</span>
+                    <button class="lrs-node" type="button" data-step="storage" aria-pressed="false">
+                        <span class="lrs-node-icon" aria-hidden="true">04</span>
+                        <span class="lrs-node-copy">
+                            <strong>Raw Statement Storage</strong>
+                            <small>검증된 원본 데이터 저장</small>
+                        </span>
+                        <span class="lrs-node-status">Waiting</span>
+                    </button>
+                </div>
+
+                <div class="lrs-branch-path lrs-fail-path" data-path="fail">
+                    <div class="lrs-branch-line" aria-hidden="true"><span class="lrs-packet"></span></div>
+                    <span class="lrs-result-badge">FAIL</span>
+                    <button class="lrs-node" type="button" data-step="error" aria-pressed="false">
+                        <span class="lrs-node-icon" aria-hidden="true">!</span>
+                        <span class="lrs-node-copy">
+                            <strong>Error Response</strong>
+                            <small>검증 오류 반환</small>
+                        </span>
+                        <span class="lrs-node-status">Waiting</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <button id="internal-open" class="lrs-secondary-button" type="button">
+            View Internal Processing <span aria-hidden="true">→</span>
+        </button>
+    </div>
+
+    <aside class="lrs-detail" aria-live="polite">
+        <span class="lrs-eyebrow">STEP DETAILS</span>
+        <h2 id="lrs-detail-title">Learning Event</h2>
+        <p id="lrs-description">학습 플랫폼에서 사용자의 활동을 xAPI Statement로 생성합니다.</p>
+        <div class="lrs-code-header"><span>Example</span><span class="lrs-code-dot"></span></div>
+        <pre id="lrs-code"><code>{
+  "actor": "student01",
+  "verb": "completed",
+  "object": "lesson01",
+  "timestamp": "2026-08-06T10:30:00Z"
+}</code></pre>
+        <p id="lrs-live-status" class="lrs-live-status">카드를 선택하거나 이벤트를 실행해 보세요.</p>
+    </aside>
+</section>
+
+<div id="internal-modal" class="lrs-modal" role="dialog" aria-modal="true"
+    aria-labelledby="internal-title" aria-hidden="true">
+    <div class="lrs-modal-card" tabindex="-1">
+        <button id="internal-close" class="lrs-modal-close" type="button" aria-label="내부 처리 모달 닫기">×</button>
+        <div class="lrs-modal-heading">
+            <div>
+                <span class="lrs-eyebrow">INTERNAL ARCHITECTURE</span>
+                <h2 id="internal-title">LRS Internal Processing</h2>
+                <p>저장된 원본 Statement가 분석 가능한 데이터로 변환되는 과정입니다.</p>
+            </div>
+            <button id="internal-replay" class="lrs-secondary-button" type="button">Replay Flow</button>
+        </div>
+
+        <div id="internal-pipeline" class="internal-pipeline">
+            <button class="internal-node" type="button" data-internal-step="raw">
+                <strong>Raw Statement</strong><small>검증 후 저장된 원본 이벤트 데이터</small>
+            </button>
+            <div class="internal-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+            <button class="internal-node" type="button" data-internal-step="beat">
+                <strong>Celery Beat</strong><small>주기적으로 후처리 Task 호출</small>
+            </button>
+            <div class="internal-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+            <button class="internal-node" type="button" data-internal-step="processing">
+                <strong>Statement Processing</strong><small>서비스 활용을 위한 데이터 처리</small>
+            </button>
+            <div class="internal-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+            <button class="internal-node" type="button" data-internal-step="transform">
+                <strong>Statement Transform</strong><small>주요 xAPI 영역 구조화</small>
+            </button>
+            <div class="internal-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+            <button class="internal-node" type="button" data-internal-step="structured">
+                <strong>Structured Statement</strong><small>분석·검색용 처리 완료 데이터</small>
+            </button>
+            <div class="internal-connector" aria-hidden="true"><span class="lrs-packet"></span></div>
+            <button class="internal-node internal-destination" type="button" data-internal-step="analytics">
+                <strong>Analytics / Search / Dashboard</strong><small>데이터 활용</small>
+            </button>
+        </div>
+
+        <div id="internal-detail" class="internal-detail" aria-live="polite">
+            <strong>Raw Statement</strong>
+            <span>검증 후 저장된 원본 이벤트 데이터입니다.</span>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/js/lrs.js') }}"></script>
+{% endblock %}
