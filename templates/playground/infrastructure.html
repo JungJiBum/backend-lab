@@ -10,21 +10,21 @@
 <section class="playground-hero infra-hero">
     <span class="badge">Interactive Playground</span>
     <h1>Infrastructure Automation</h1>
-    <p>서버 구성, 환경 구축, 배포와 반복 운영 작업을 자동화하여 Target Environment를 원하는 상태로 변경하는 흐름을 보여줍니다.</p>
+    <p>실제 운영 환경의 구성 편차와 반복 작업을 어떻게 표준화하고, 검증 가능한 자동화 과정으로 전환했는지 보여줍니다.</p>
 </section>
 
 <nav class="infra-case-tabs" aria-label="Infrastructure automation cases">
     <button class="infra-case-tab is-active" type="button" data-case="provisioning" aria-current="page">
-        <span>CASE 01</span><strong>Ansible Server Automation</strong><small>Inventory · Playbook</small>
+        <span>CASE 01</span><strong>다중 서버 표준 구성 자동화</strong><small>Ansible · Linux</small>
     </button>
     <button class="infra-case-tab" type="button" data-case="docker">
-        <span>CASE 02</span><strong>Docker Environment Setup</strong><small>Image · Compose</small>
+        <span>CASE 02</span><strong>서비스 실행환경 재현 자동화</strong><small>Docker · Docker Compose</small>
     </button>
     <button class="infra-case-tab" type="button" data-case="closed-network">
-        <span>CASE 03</span><strong>Closed Network Installation</strong><small>Offline Package · Script</small>
+        <span>CASE 03</span><strong>폐쇄망 설치 및 환경 구성 자동화</strong><small>Offline Package · Script</small>
     </button>
     <button class="infra-case-tab" type="button" data-case="operations">
-        <span>CASE 04</span><strong>Operation Automation</strong><small>Scheduler · Report</small>
+        <span>CASE 04</span><strong>반복 운영 작업 자동화</strong><small>Scheduler · Script</small>
     </button>
 </nav>
 
@@ -33,7 +33,8 @@
         <div class="infra-toolbar">
             <div>
                 <span class="infra-eyebrow">AUTOMATION FLOW</span>
-                <h2 id="infra-flow-title">Ansible Server Automation</h2>
+                <h2 id="infra-flow-title">다중 서버 표준 구성 자동화</h2>
+                <span id="infra-technology" class="infra-tech-badge">Ansible · Linux</span>
             </div>
             <button id="start-automation" class="infra-primary-button" type="button">
                 <span aria-hidden="true">▶</span> Start Automation
@@ -46,9 +47,13 @@
 
     <aside class="infra-detail" aria-live="polite">
         <span class="infra-eyebrow">STEP DETAILS</span>
-        <h2 id="infra-detail-title">Inventory</h2>
-        <p id="infra-description">관리 대상 서버 정보를 정의하는 파일입니다.</p>
-        <div class="infra-code-header"><span>Example</span><span></span></div>
+        <h2 id="infra-detail-title">Inventory Load</h2>
+        <div class="infra-detail-sections">
+            <section><h3>Context</h3><p id="infra-context"></p></section>
+            <section><h3>Execution</h3><p id="infra-execution"></p></section>
+            <section><h3>Result</h3><p id="infra-result"></p></section>
+        </div>
+        <div class="infra-code-header"><span>Operation Output</span><span></span></div>
         <pre id="infra-code"><code>[web]
 web01
 web02
