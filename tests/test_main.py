@@ -20,3 +20,18 @@ def test_health():
 
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
+
+
+def test_fastapi_playground():
+    response = client.get("/playground/fastapi")
+
+    assert response.status_code == 200
+    assert "Portfolio Platform" in response.text
+    assert "/static/js/fastapi.js" in response.text
+
+
+def test_fastapi_playground_script():
+    response = client.get("/static/js/fastapi.js")
+
+    assert response.status_code == 200
+    assert "runLifecycle" in response.text

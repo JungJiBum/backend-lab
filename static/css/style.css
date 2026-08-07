@@ -207,6 +207,50 @@ nav a:hover {
 
 }
 
+.btn.hero-experience-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    min-width: 330px;
+    padding: 15px 18px 15px 20px;
+    border: 1px solid #2ea043;
+    box-shadow: 0 10px 30px rgba(35, 134, 54, .18);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.hero-experience-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(35, 134, 54, .26);
+}
+
+.hero-experience-cta span,
+.hero-experience-cta strong,
+.hero-experience-cta small {
+    display: block;
+}
+
+.hero-experience-cta strong {
+    font-size: 14px;
+}
+
+.hero-experience-cta small {
+    margin-top: 3px;
+    color: rgba(255, 255, 255, .72);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.hero-experience-cta b {
+    font-size: 20px;
+    font-weight: 400;
+    transition: transform .2s ease;
+}
+
+.hero-experience-cta:hover b {
+    transform: translateX(3px);
+}
+
 
 
 .btn {
@@ -326,6 +370,9 @@ nav a:hover {
    EXPERIENCE
 ========================= */
 
+#experience {
+    scroll-margin-top: 20px;
+}
 
 .experience-grid {
 
@@ -465,6 +512,10 @@ nav a:hover {
 
 }
 
+#engineering-experience {
+    scroll-margin-top: 100px;
+}
+
 
 
 .playground-category h3 {
@@ -497,6 +548,10 @@ nav a:hover {
 
     gap: 24px;
 
+}
+
+.playground-grid-single {
+    grid-template-columns: minmax(0, 640px);
 }
 
 
@@ -959,6 +1014,11 @@ body.modal-open {
 
         flex-direction: column;
 
+    }
+
+    .btn.hero-experience-cta {
+        width: 100%;
+        min-width: 0;
     }
 
 

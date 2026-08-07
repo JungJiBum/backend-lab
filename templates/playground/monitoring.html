@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Monitoring Architecture | Playground{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="playground-hero monitoring-hero">
+    <span class="badge">Interactive Playground</span>
+    <h1>Monitoring Architecture</h1>
+    <p>여러 서버에서 생성되는 Metric을 중앙에서 수집·저장하고 Dashboard로 조회하는 구조와, 운영 중 발생한 Metric Identity 충돌 해결 과정을 보여줍니다.</p>
+</section>
+
+<section class="monitoring-demo" aria-labelledby="monitoring-title">
+    <div class="monitoring-toolbar">
+        <div>
+            <span class="monitoring-eyebrow">METRIC DATA FLOW</span>
+            <h2 id="monitoring-title">Distributed Server Monitoring</h2>
+        </div>
+        <div class="monitoring-controls">
+            <label class="monitoring-failure-toggle">
+                <span>Normal</span>
+                <input id="monitoring-failure" type="checkbox">
+                <span class="monitoring-toggle-track" aria-hidden="true"><span></span></span>
+                <span>Simulate Failure</span>
+            </label>
+            <button id="start-monitoring" class="monitoring-primary-button" type="button"><span aria-hidden="true">▶</span> Start Monitoring</button>
+        </div>
+    </div>
+
+    <div id="monitoring-architecture" class="monitoring-architecture">
+        <section class="monitoring-targets" aria-labelledby="targets-title">
+            <div class="monitoring-column-title"><span>01</span><div><strong id="targets-title">Target Servers</strong><small>Metric source</small></div></div>
+            {% for server in ["LRS01", "LRS02", "LRS03"] %}
+            <button class="monitoring-server-card" type="button" data-component="{{ server|lower }}" data-server="{{ server|lower }}">
+                <span class="monitoring-server-head"><strong>{{ server }}</strong><span class="monitoring-health"><i></i> Healthy</span></span>
+                <span class="monitoring-exporter">node-exporter <small>ACTIVE</small></span>
+                <span class="monitoring-metrics"><i>CPU</i><i>Memory</i><i>Disk</i><i>Network</i></span>
+                <span class="monitoring-identity">instance={{ server|lower }}</span>
+            </button>
+            {% endfor %}
+        </section>
+
+        <section class="monitoring-flow-zone" aria-labelledby="flow-title">
+            <div class="monitoring-column-title"><span>02</span><div><strong id="flow-title">Metric Flow</strong><small>HTTP /metrics</small></div></div>
+            {% for server in ["lrs01", "lrs02", "lrs03"] %}
+            <div class="monitoring-metric-path" data-path="{{ server }}" aria-label="{{ server|upper }} metric data path">
+                <span class="monitoring-path-label">/metrics</span>
+                <span class="monitoring-line"><span class="monitoring-packet"></span></span>
+                <span class="monitoring-arrow" aria-hidden="true">›</span>
+            </div>
+            {% endfor %}
+        </section>
+
+        <section class="monitoring-central" aria-labelledby="central-title">
+            <div class="monitoring-column-title"><span>03</span><div><strong id="central-title">Central Monitoring Server</strong><small>Collect · Store · Visualize</small></div></div>
+            <div class="monitoring-central-card">
+                <button id="prometheus-card" class="monitoring-service-card" type="button" data-component="prometheus">
+                    <span class="monitoring-service-head"><strong>Prometheus</strong><span class="monitoring-service-state">STANDBY</span></span>
+                    <span class="monitoring-service-item"><i>↳</i> Metric Scraping</span>
+                    <span class="monitoring-service-item"><i>↳</i> Time Series Storage</span>
+                    <span class="monitoring-service-item"><i>↳</i> Target Health</span>
+                    <span id="prometheus-result" class="monitoring-service-result">Targets ready</span>
+                </button>
+                <span class="monitoring-internal-flow" aria-hidden="true"><i></i><b>PromQL</b><i></i></span>
+                <button id="grafana-card" class="monitoring-service-card" type="button" data-component="grafana">
+                    <span class="monitoring-service-head"><strong>Grafana</strong><span class="monitoring-service-state">STANDBY</span></span>
+                    <span class="monitoring-service-item"><i>↳</i> Dashboard Visualization</span>
+                    <span class="monitoring-service-item"><i>↳</i> PromQL Query</span>
+                    <span id="grafana-result" class="monitoring-service-result">Dashboard waiting</span>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div class="monitoring-run-status" aria-live="polite">
+        <span id="monitoring-status-dot"></span><strong id="monitoring-status-title">Ready</strong>
+        <p id="monitoring-live-status">Normal 모드에서 Metric 수집 구조를 실행하거나 Failure를 재현해 보세요.</p>
+    </div>
+
+    <section id="monitoring-resolution" class="monitoring-resolution" aria-labelledby="resolution-title" hidden>
+        <div class="monitoring-resolution-heading">
+            <div><span class="monitoring-eyebrow">FAILURE SCENARIO</span><h2 id="resolution-title">Prometheus Metric Identity Collision</h2></div>
+            <span id="resolution-state" class="monitoring-resolution-state">COLLISION DETECTED</span>
+        </div>
+        <p>서로 다른 서버가 같은 Metric Identity로 수집되어 Time Series를 구분하지 못한 운영 장애를 재현합니다.</p>
+        <div class="monitoring-resolution-grid">
+            <div><span>BEFORE</span><pre>external_labels:
+  site: seoul
+
+LRS01  instance=lrs01
+LRS02  instance=lrs01</pre></div>
+            <span class="monitoring-resolution-arrow" aria-hidden="true">→</span>
+            <div><span>AFTER</span><pre>external_labels:
+  site: seoul
+  instance: lrs02
+
+Targets: Healthy</pre></div>
+        </div>
+        <div class="monitoring-error-output"><strong>Prometheus Error</strong><code id="monitoring-error-text">duplicate time series · out of order samples</code></div>
+        <button id="apply-monitoring-resolution" class="monitoring-secondary-button" type="button">Apply Identity Resolution <span aria-hidden="true">→</span></button>
+    </section>
+</section>
+
+<div id="monitoring-modal" class="monitoring-modal" role="dialog" aria-modal="true" aria-labelledby="monitoring-modal-title" aria-hidden="true">
+    <div class="monitoring-modal-card" tabindex="-1">
+        <button id="monitoring-modal-close" class="monitoring-modal-close" type="button" aria-label="상세 모달 닫기">×</button>
+        <span class="monitoring-eyebrow">COMPONENT DETAILS</span>
+        <h2 id="monitoring-modal-title">Node Exporter</h2>
+        <p id="monitoring-modal-summary"></p>
+        <div id="monitoring-detail-flow" class="monitoring-detail-flow"></div>
+        <div class="monitoring-detail-grid">
+            <section><h3>역할</h3><p id="monitoring-detail-role"></p></section>
+            <section><h3>수집 데이터</h3><p id="monitoring-detail-data"></p></section>
+            <section><h3>통신 흐름</h3><p id="monitoring-detail-communication"></p></section>
+            <section><h3>설정 정보</h3><pre id="monitoring-detail-config"></pre></section>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/js/monitoring.js') }}"></script>
+{% endblock %}
