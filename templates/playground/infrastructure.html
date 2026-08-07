@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Infrastructure Automation | Playground{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="playground-hero infra-hero">
+    <span class="badge">Interactive Playground</span>
+    <h1>Infrastructure Automation</h1>
+    <p>서버 구성, 환경 구축, 배포와 반복 운영 작업을 자동화하여 Target Environment를 원하는 상태로 변경하는 흐름을 보여줍니다.</p>
+</section>
+
+<nav class="infra-case-tabs" aria-label="Infrastructure automation cases">
+    <button class="infra-case-tab is-active" type="button" data-case="provisioning" aria-current="page">
+        <span>CASE 01</span><strong>Ansible Server Automation</strong><small>Inventory · Playbook</small>
+    </button>
+    <button class="infra-case-tab" type="button" data-case="docker">
+        <span>CASE 02</span><strong>Docker Environment Setup</strong><small>Image · Compose</small>
+    </button>
+    <button class="infra-case-tab" type="button" data-case="closed-network">
+        <span>CASE 03</span><strong>Closed Network Installation</strong><small>Offline Package · Script</small>
+    </button>
+    <button class="infra-case-tab" type="button" data-case="operations">
+        <span>CASE 04</span><strong>Operation Automation</strong><small>Scheduler · Report</small>
+    </button>
+</nav>
+
+<section class="infra-demo" aria-labelledby="infra-flow-title">
+    <div class="infra-main">
+        <div class="infra-toolbar">
+            <div>
+                <span class="infra-eyebrow">AUTOMATION FLOW</span>
+                <h2 id="infra-flow-title">Ansible Server Automation</h2>
+            </div>
+            <button id="start-automation" class="infra-primary-button" type="button">
+                <span aria-hidden="true">▶</span> Start Automation
+            </button>
+        </div>
+
+        <div id="infra-pipeline" class="infra-pipeline" aria-label="Infrastructure automation pipeline"></div>
+
+    </div>
+
+    <aside class="infra-detail" aria-live="polite">
+        <span class="infra-eyebrow">STEP DETAILS</span>
+        <h2 id="infra-detail-title">Inventory</h2>
+        <p id="infra-description">관리 대상 서버 정보를 정의하는 파일입니다.</p>
+        <div class="infra-code-header"><span>Example</span><span></span></div>
+        <pre id="infra-code"><code>[web]
+web01
+web02
+
+[database]
+db01</code></pre>
+        <div class="infra-progress" aria-label="Automation progress">
+            <div><span>Progress</span><strong id="infra-progress-label">0%</strong></div>
+            <span class="infra-progress-track"><span id="infra-progress-bar"></span></span>
+        </div>
+        <p id="infra-live-status" class="infra-live-status">단계를 선택하거나 자동화를 실행해 보세요.</p>
+    </aside>
+</section>
+
+<script src="{{ url_for('static', path='/js/infrastructure.js') }}"></script>
+{% endblock %}
