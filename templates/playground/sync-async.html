@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Sync / Async Processing | Playground{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">{% endblock %}
+{% block content %}
+<section class="playground-hero sync-async-hero">
+    <span class="badge">Interactive Playground</span><h1>Sync / Async Processing</h1>
+    <p>HTTP 요청 안에서 작업을 완료하는 동기 처리와 Message Queue로 요청·작업을 분리하는 비동기 처리 흐름을 비교합니다.</p>
+</section>
+<section class="sync-async-demo" aria-labelledby="sync-async-title">
+    <div class="sync-async-toolbar">
+        <div><span class="sync-async-eyebrow">PROCESSING FLOW COMPARISON</span><h2 id="sync-async-title">Request / Task Flow</h2></div>
+        <div class="sync-async-actions"><a class="sync-async-github" href="https://github.com/JungJiBum/sync-async-lab" target="_blank" rel="noopener noreferrer">View GitHub ↗</a><button id="start-comparison" class="sync-async-primary-button" type="button"><span aria-hidden="true">▶</span> Run Comparison</button></div>
+    </div>
+    <div class="sync-async-summary" aria-label="Measured response times">
+        <div><span>SYNC HTTP RESPONSE</span><strong id="sync-time">—</strong><small>작업 완료 후 응답</small></div>
+        <div><span>ASYNC HTTP RESPONSE</span><strong id="async-time">—</strong><small>작업과 응답 분리</small></div>
+        <div><span>ACTUAL PROCESSING</span><strong id="worker-time">—</strong><small>두 방식 모두 약 5초</small></div>
+    </div>
+    <div class="sync-async-flows">
+        <section class="flow-canvas sync-flow" aria-labelledby="sync-flow-title">
+            <div class="flow-heading"><div><span>SYNC</span><h3 id="sync-flow-title">Request-bound Processing</h3><p>작업이 끝날 때까지 HTTP 연결 유지</p></div><strong id="sync-lane-state" class="flow-state">READY</strong></div>
+            <div class="sync-diagram" aria-label="Client와 FastAPI 사이의 동기 요청 및 응답 흐름">
+                <div id="sync-client" class="system-node client-node"><i>CL</i><span><strong>Client</strong><small id="sync-client-status">Ready</small></span></div>
+                <div id="sync-request-path" class="flow-path horizontal-path request-path"><span class="path-label">HTTP Request</span><i class="flow-pulse"></i><b>→</b></div>
+                <div id="sync-api" class="system-node api-node"><i>API</i><span><strong>FastAPI</strong><small id="sync-api-status">Waiting</small></span><em class="node-progress"><span id="sync-progress"></span></em></div>
+                <div id="sync-response-path" class="flow-path horizontal-path response-path reverse-path"><span class="path-label">HTTP 200 Response</span><i class="flow-pulse"></i><b>←</b></div>
+            </div>
+            <div id="sync-message" class="flow-message" aria-live="polite"><i></i><span><strong>Ready</strong><small>FastAPI 내부에서 작업과 HTTP 응답이 함께 처리됩니다.</small></span></div>
+        </section>
+        <section class="flow-canvas async-flow" aria-labelledby="async-flow-title">
+            <div class="flow-heading"><div><span>ASYNC</span><h3 id="async-flow-title">Queue-based Processing</h3><p>HTTP 응답과 실제 Task 실행 분리</p></div><strong id="async-lane-state" class="flow-state">READY</strong></div>
+            <div class="async-diagram" aria-label="FastAPI, RabbitMQ, Celery Worker, Redis 비동기 처리 흐름">
+                <div id="async-client" class="system-node client-node"><i>CL</i><span><strong>Client</strong><small id="async-client-status">Ready</small></span></div>
+                <div id="async-api" class="system-node api-node"><i>API</i><span><strong>FastAPI</strong><small id="async-api-status">Waiting</small></span></div>
+                <div id="rabbitmq" class="system-node broker-node"><i>MQ</i><span><strong>RabbitMQ</strong><small id="rabbit-status">Message Broker</small></span></div>
+                <div id="worker" class="system-node worker-node"><i>WK</i><span><strong>Celery Worker</strong><small id="worker-status">Task Processing</small></span><em class="node-progress"><span id="worker-progress"></span></em></div>
+                <div id="redis" class="system-node redis-node"><i>RD</i><span><strong>Redis</strong><small id="redis-status">Result Backend</small></span></div>
+                <div id="path-client-api" class="flow-path path-client-api"><span class="path-label">Request</span><i class="flow-pulse"></i><b>→</b></div>
+                <div id="path-api-mq" class="flow-path path-api-mq"><span class="path-label">Task Publish</span><i class="flow-pulse"></i><b>→</b></div>
+                <div id="path-mq-worker" class="flow-path path-mq-worker"><span class="path-label">Consume</span><i class="flow-pulse"></i><b>→</b></div>
+                <div id="path-worker-redis" class="flow-path vertical-path path-worker-redis"><span class="path-label">Save Result</span><i class="flow-pulse"></i><b>↓</b></div>
+                <div id="path-http-202" class="flow-path path-http-202 reverse-path"><span class="path-label">HTTP 202 + task_id</span><i class="flow-pulse"></i><b>←</b></div>
+                <div id="path-status" class="flow-path path-status"><span class="path-label">Status Query · task_id</span><i class="flow-pulse"></i><b>→</b></div>
+            </div>
+            <div id="async-message" class="flow-message" aria-live="polite"><i></i><span><strong id="task-status">Ready</strong><small id="task-result">Task를 실행하면 PENDING → SUCCESS 변화를 확인할 수 있습니다.</small></span><b id="task-id">TASK STATUS</b></div>
+        </section>
+    </div>
+</section>
+<script src="{{ url_for('static', path='/js/sync-async.js') }}"></script>
+{% endblock %}
