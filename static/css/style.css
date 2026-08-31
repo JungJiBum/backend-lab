@@ -396,18 +396,6 @@ nav a:hover {
 
     border-radius: 16px;
 
-    transition: .25s;
-
-}
-
-
-
-.experience-card:hover {
-
-    transform: translateY(-5px);
-
-    border-color: #58a6ff;
-
 }
 
 
