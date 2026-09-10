@@ -548,7 +548,9 @@ nav a:hover {
 
 .playground-card {
 
-    display: block;
+    display: flex;
+
+    flex-direction: column;
 
     padding: 28px;
 
@@ -560,7 +562,9 @@ nav a:hover {
 
     border-radius: 16px;
 
-    transition: .25s;
+    cursor: pointer;
+
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 
 }
 
@@ -570,7 +574,17 @@ nav a:hover {
 
 .playground-card:hover {
 
-    transform: translateY(-5px);
+    transform: translateY(-3px);
+
+    border-color: #58a6ff;
+
+}
+
+.playground-card:focus-visible {
+
+    outline: 2px solid #58a6ff;
+
+    outline-offset: 4px;
 
     border-color: #58a6ff;
 
@@ -597,6 +611,45 @@ nav a:hover {
     color: #8b949e;
 
     line-height: 1.6;
+
+}
+
+.playground-card-cta {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    align-self: flex-end;
+
+    gap: 6px;
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    color: #58a6ff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+.playground-card-cta b {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: transform .2s ease;
+
+}
+
+.playground-card:hover .playground-card-cta b,
+.playground-card:focus-visible .playground-card-cta b {
+
+    transform: translateX(3px);
 
 }
 

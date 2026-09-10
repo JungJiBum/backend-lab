@@ -35,3 +35,27 @@ def test_fastapi_playground_script():
 
     assert response.status_code == 200
     assert "runLifecycle" in response.text
+
+
+def test_voice_agent_playground():
+    response = client.get("/playground/voice-agent")
+
+    assert response.status_code == 200
+    assert "Voice Agent Lab" in response.text
+    assert "Faster-Whisper" in response.text
+    assert "/static/js/voice-agent.js" in response.text
+
+
+def test_voice_agent_card_links_to_playground():
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert 'href="/playground/voice-agent"' in response.text
+    assert "View Lab" in response.text
+
+
+def test_voice_agent_playground_script():
+    response = client.get("/static/js/voice-agent.js")
+
+    assert response.status_code == 200
+    assert "runFlow" in response.text
