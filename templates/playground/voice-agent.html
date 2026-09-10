@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Voice Agent Lab | Playground{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/playground.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="playground-hero voice-hero">
+    <span class="badge">Engineering Lab</span>
+    <div class="voice-hero-heading">
+        <h1>Voice Agent Lab</h1>
+        <a class="sync-async-github" href="https://github.com/JungJiBum/voice-agent-lab" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
+    </div>
+    <p>Local STT/TTS 기반 Voice Backend</p>
+</section>
+
+<nav class="infra-case-tabs voice-mode-tabs" aria-label="Voice processing modes">
+    <button class="infra-case-tab is-active" type="button" data-mode="stt" aria-current="page">
+        <span>FLOW 01</span><strong>Speech to Text</strong><small>Faster-Whisper · Local STT</small>
+    </button>
+    <button class="infra-case-tab" type="button" data-mode="tts">
+        <span>FLOW 02</span><strong>Text to Speech</strong><small>sherpa-onnx · Supertonic 3</small>
+    </button>
+</nav>
+
+<section class="voice-demo" aria-labelledby="voice-flow-title">
+    <div class="voice-toolbar">
+        <div>
+            <span class="fastapi-eyebrow">VOICE PROCESSING FLOW</span>
+            <h2 id="voice-flow-title">Audio to Text</h2>
+            <span id="voice-technology" class="infra-tech-badge">FastAPI · Faster-Whisper</span>
+        </div>
+        <button id="start-voice-flow" class="fastapi-primary-button" type="button"><span aria-hidden="true">▶</span> Run STT Flow</button>
+    </div>
+
+    <div class="voice-pipeline-shell">
+        <div id="voice-pipeline" class="voice-pipeline" aria-label="Voice processing pipeline"></div>
+        <div class="voice-output" aria-live="polite">
+            <span id="voice-output-state">READY</span>
+            <strong id="voice-output-title">Audio Input</strong>
+            <small id="voice-output-code">Run STT Flow를 눌러 처리 과정을 확인하세요.</small>
+        </div>
+    </div>
+
+    <section class="voice-details" aria-labelledby="voice-details-title">
+        <div class="voice-details-heading"><span class="fastapi-eyebrow">IMPLEMENTATION DETAILS</span><h2 id="voice-details-title">구현 내용</h2></div>
+        <div class="voice-detail-grid">
+            <div>
+                <strong>로컬 음성 처리</strong>
+                <ul><li>Faster-Whisper 기반 한국어 STT</li><li>Supertonic 3 기반 한국어 TTS</li><li>외부 유료 AI API 없이 로컬 처리</li></ul>
+            </div>
+            <div>
+                <strong>Provider 구조</strong>
+                <ul><li>STTProvider / TTSProvider 인터페이스 분리</li><li>음성 모델 구현체와 API 계층의 의존성 분리</li></ul>
+            </div>
+            <div>
+                <strong>입력 검증</strong>
+                <ul><li>STT 음성 파일 입력 검증</li><li>TTS text / voice_id / speed 검증</li><li>voice_id 0~9, speed 0.5~2.0</li></ul>
+            </div>
+            <div>
+                <strong>파일 Lifecycle</strong>
+                <ul><li>임시 WAV 생성 후 FileResponse 반환</li><li>응답 완료 후 임시 파일 자동 삭제</li><li>합성 실패 시 partial file 정리</li></ul>
+            </div>
+            <div>
+                <strong>검증</strong>
+                <ul><li>Provider 및 FastAPI API 테스트</li><li>실제 STT/TTS 처리 검증</li><li>현재 16 tests passed</li></ul>
+            </div>
+        </div>
+        <div class="voice-planned">
+            <div><span>FUTURE / PLANNED</span><strong>Agent</strong><i>→</i><strong>Local LLM</strong><i>→</i><strong>Tool Execution</strong></div>
+            <p>현재 STT/TTS Backend 이후 Local LLM 기반 Agent와 Tool 실행 구조를 연결할 예정입니다. 아직 구현되지 않은 기능입니다.</p>
+        </div>
+    </section>
+</section>
+
+<script src="{{ url_for('static', path='/js/voice-agent.js') }}"></script>
+{% endblock %}
