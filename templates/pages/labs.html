@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Interactive Labs | Backend Lab{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', path='/css/pages.css') }}">{% endblock %}
+{% block content %}
+<section class="page-shell">
+  <header class="page-heading"><div><span class="page-eyebrow">INTERACTIVE LABS</span><h1>독립적인 처리 흐름을 직접 확인합니다.</h1></div><p>프로젝트 상세 페이지와 중복되지 않는 Backend 실험만 모았습니다. 각 화면은 실제 서비스가 아닌 브라우저 기반 시각화입니다.</p></header>
+  <nav class="page-content lab-directory lab-directory-curated" aria-label="Interactive Lab 목록">
+    <a href="/playground/sync-async"><span><em>REQUEST / TASK</em><strong>Sync / Async Processing</strong><small>HTTP 응답과 Message Queue 기반 작업 수행이 분리되는 과정을 비교합니다.</small></span><b>체험하기 →</b></a>
+    <a href="/playground/voice-agent"><span><em>LOCAL VOICE</em><strong>Voice Agent Lab</strong><small>Local STT와 TTS Provider를 통한 음성 처리 Pipeline을 확인합니다.</small></span><b>체험하기 →</b></a>
+  </nav>
+  <aside class="labs-routing-note"><strong>프로젝트 기반 시뮬레이션을 찾고 있나요?</strong><p>LRS, GitOps, Monitoring 시각화는 실제 수행 범위와 함께 볼 수 있도록 Career Projects와 Personal Projects 상세 페이지에 통합했습니다. 기존 Playground URL과 코드는 호환성을 위해 유지합니다.</p><div><a href="/projects/career">실무 프로젝트 →</a><a href="/projects/personal">개인 프로젝트 →</a></div></aside>
+</section>
+{% endblock %}

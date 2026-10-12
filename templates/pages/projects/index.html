@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Projects | Jung Jibum{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/pages.css') }}">{% endblock %}
+{% block content %}
+<section class="page-shell">
+  <header class="page-heading">
+    <div><span class="page-eyebrow">PROJECTS</span>
+      <h1>프로젝트 둘러보기</h1>
+    </div>
+    <p>실무에서 수행한 문제 해결과 직접 설계·구현한 개인 프로젝트를 명확히 구분해 탐색합니다.</p>
+  </header>
+  <div class="page-content project-paths">
+    <a class="project-path" href="/projects/career"><span>01 · PROFESSIONAL EXPERIENCE</span>
+      <h2>Career Projects</h2>
+      <p>회사에서 직접 수행한 Backend, 배포, 운영과 장애 분석 경험입니다.</p><b>실무 프로젝트 보기 →</b>
+    </a>
+    <a class="project-path" href="/projects/personal"><span>02 · INDEPENDENT WORK</span>
+      <h2>Personal Projects</h2>
+      <p>회사 코드·데이터와 분리해 직접 설계하고 검증한 개인 프로젝트입니다.</p><b>개인 프로젝트 보기 →</b>
+    </a>
+  </div>
+</section>
+{% endblock %}

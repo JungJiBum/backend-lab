@@ -11,7 +11,7 @@
     <title>
 
         {% block title %}
-        Jibum Jung | Backend Engineer
+        Backend Lab | Interactive Engineering Systems
         {% endblock %}
 
     </title>
@@ -38,49 +38,41 @@
 <body>
 
 
-    <header class="navbar">
-
-
-        <div class="logo">
-
-            <a href="/">
-                Jibum Jung
-            </a>
-
-        </div>
-
-
-
-        <nav>
-
-
-            <a href="/#about">
-                About
-            </a>
-
-
-            <a href="/#experience">
-                Experience
-            </a>
-
-            <a href="/#tech">
-                Tech Stack
-            </a>
-
-            <a href="/#playground">
-                Playground
-            </a>
-
-
-            <a href="https://github.com/JungJiBum" target="_blank">
-                GitHub
-            </a>
-
-
+    <button class="mobile-menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false"
+        data-nav-toggle>☰</button>
+    <aside class="site-sidebar" aria-label="주요 탐색">
+        <a class="sidebar-brand" href="/"><strong>JB.</strong><span>Jung jibum<small>Python Backend
+                    Engineer</small></span></a>
+        {% set current_path = request.url.path %}
+        {% set projects_open = current_path.startswith('/projects') %}
+        <nav class="sidebar-nav" aria-label="사이트 메뉴">
+            <a href="/" class="{% if current_path == '/' %}is-active{% endif %}" {% if current_path=='/'
+                %}aria-current="page" {% endif %}><span aria-hidden="true">⌂</span>Home</a>
+            <a href="/about" class="{% if current_path == '/about' %}is-active{% endif %}" {% if current_path=='/about'
+                %}aria-current="page" {% endif %}><span aria-hidden="true">○</span>About</a>
+            <div class="sidebar-nav-group {% if projects_open %}is-open{% endif %}" data-projects-menu>
+                <button class="sidebar-nav-parent {% if projects_open %}is-active{% endif %}" type="button"
+                    aria-expanded="{{ 'true' if projects_open else 'false' }}" aria-controls="projects-submenu"
+                    data-projects-toggle>
+                    <span aria-hidden="true">◇</span><b>Projects</b><i aria-hidden="true">⌄</i>
+                </button>
+                <div id="projects-submenu" class="sidebar-submenu" {% if not projects_open %}hidden{% endif %}>
+                    <a href="/projects/career"
+                        class="{% if current_path.startswith('/projects/career') %}is-active{% endif %}" {% if
+                        current_path.startswith('/projects/career') %}aria-current="page" {% endif %}>Career
+                        Projects</a>
+                    <a href="/projects/personal"
+                        class="{% if current_path.startswith('/projects/personal') %}is-active{% endif %}" {% if
+                        current_path.startswith('/projects/personal') %}aria-current="page" {% endif %}>Personal
+                        Projects</a>
+                </div>
+            </div>
+            <a href="/contact" class="{% if current_path == '/contact' %}is-active{% endif %}" {% if
+                current_path=='/contact' %}aria-current="page" {% endif %}><span aria-hidden="true">✉</span>Contact</a>
         </nav>
-
-
-    </header>
+        <div class="sidebar-foot"><span><i></i> Available for conversation</span><a href="https://github.com/JungJiBum"
+                target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+    </aside>
 
 
 
@@ -99,7 +91,7 @@
 
 
 
-    <footer>
+    <footer id="contact">
 
 
         <div class="footer-container">
@@ -107,7 +99,7 @@
 
             <div class="footer-copy">
 
-                © 2026 Jibum Jung
+                © 2026 Backend Lab · Jibum Jung
 
             </div>
 

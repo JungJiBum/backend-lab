@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Contact | Jung Jibum{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/pages.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/contact.css') }}">{% endblock %}
+{% block content %}
+<article class="page-shell contact-page">
+  <header class="contact-hero">
+    <div class="contact-hero-copy"><span class="page-eyebrow">CONTACT</span>
+      <h1>새로운 기회와<br><em>좋은 협업을 기다립니다.</em></h1>
+      <p>백엔드 개발, 데이터 처리, 시스템 설계 및 운영과 관련된 제안을 이메일로 보내주세요.</p>
+    </div>
+    <div class="contact-hero-visual" aria-hidden="true">
+      <div class="contact-skyline"></div>
+      <div class="contact-terminal"><span></span><i></i><i></i><i></i><i></i></div>
+      <div class="contact-signal"><b></b><b></b><b></b></div>
+    </div>
+  </header>
+
+  <section class="contact-email-card" aria-labelledby="contact-email-title">
+    <div class="contact-email-icon"><img src="{{ url_for('static', path='/icons/contact/mail.svg') }}" alt="" width="36"
+        height="36"></div>
+    <div><span>가장 빠른 연락 방법</span>
+      <h2 id="contact-email-title"><a href="mailto:2377325@gmail.com">2377325@gmail.com</a></h2>
+      <p>메일 앱을 열거나 이메일 주소를 복사할 수 있습니다.</p><output data-copy-status aria-live="polite"></output>
+    </div>
+    <div class="contact-email-actions"><a href="mailto:2377325@gmail.com">이메일 보내기 ↗</a><button type="button"
+        data-copy-email data-email="2377325@gmail.com"><img
+          src="{{ url_for('static', path='/icons/contact/copy.svg') }}" alt="" width="17" height="17">이메일 복사</button>
+    </div>
+  </section>
+
+  <div class="contact-grid">
+    <section class="contact-github">
+      <img src="{{ url_for('static', path='/icons/contact/github.svg') }}" alt="" width="34" height="34">
+      <div>
+        <span>GitHub</span>
+        <h2>JungJiBum</h2>
+        <p>공개된 프로젝트의 코드와 문서를 확인할 수 있습니다.</p>
+      </div>
+      <a href="https://github.com/JungJiBum" target="_blank" rel="noopener noreferrer">
+        프로필 열기 ↗
+      </a>
+    </section>
+  </div>
+
+  <footer class="contact-closing">
+    <p>보내주신 내용은 확인 후 이메일로 답변드리겠습니다.</p>
+  </footer>
+</article>
+<script src="{{ url_for('static', path='/js/contact.js') }}"></script>
+{% endblock %}

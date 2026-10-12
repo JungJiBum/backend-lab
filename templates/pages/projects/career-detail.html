@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ project.name }} | Career Projects{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('static', path='/css/flow-motion.css') }}"><link rel="stylesheet" href="{{ url_for('static', path='/css/pages.css') }}">{% endblock %}
+{% block content %}
+<article class="page-shell project-detail-page">
+  <a class="page-back-link" href="/projects/career">← Career Projects</a>
+  <header class="project-detail-heading"><div><span class="page-eyebrow">{{ project.category }}</span><h1>{{ project.name }}</h1><p>{{ project.summary }}</p></div><span class="career-confidentiality">PUBLIC SCOPE · LOGICAL ARCHITECTURE</span></header>
+  <section class="project-detail-section" aria-labelledby="overview-title"><div class="section-index"><span>01</span><h2 id="overview-title">Overview</h2></div><div><dl class="career-overview-meta"><div><dt>수행 기간</dt><dd>{{ project.period }}</dd></div><div><dt>담당 역할</dt><dd>{{ project.role }}</dd></div></dl><div class="career-background"><h3>프로젝트 배경과 목적</h3><p>{{ project.background }}</p></div><ul class="project-tech-list detail-tech-list" aria-label="사용 기술">{% for tech in project.stack %}<li>{{ tech }}</li>{% endfor %}</ul></div></section>
+  <section class="project-detail-section" aria-labelledby="architecture-title"><div class="section-index"><span>02</span><h2 id="architecture-title">Interactive Architecture</h2></div>
+    <div class="project-simulator" data-career-simulator="{{ slug }}">
+      <header class="simulator-header"><div><span>BROWSER SIMULATION</span><strong>Explore the verified workflow</strong><p>실제 운영 시스템과 연결되지 않은 공개 가능한 논리 구조 기반 시뮬레이션입니다.</p></div><output class="simulator-runtime" data-sim-runtime aria-live="polite">IDLE</output></header>
+      <div class="simulator-controls"><label>Scenario<select data-sim-scenario aria-label="시뮬레이션 시나리오"></select></label><div class="simulator-actions"><button type="button" data-sim-pause disabled>Pause</button><button type="button" data-sim-reset>Reset</button><button class="is-primary" type="button" data-sim-run>Run</button></div></div>
+      <div class="simulator-viewport" tabindex="0" aria-label="{{ project.name }} 인터랙티브 아키텍처"><div class="simulator-stage" data-sim-stage><svg class="simulator-flow-layer" data-sim-svg aria-hidden="true"><defs><marker id="career-arrow-{{ slug }}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" class="flow-svg-arrow"/></marker></defs><g data-sim-paths></g><g data-sim-packets></g></svg><div class="simulator-nodes" data-sim-nodes></div><aside class="simulator-inspector" data-sim-inspector aria-live="polite"><span>SELECT A COMPONENT</span><strong>Node inspector</strong><p>노드를 선택하면 역할과 현재 상태를 확인할 수 있습니다.</p></aside></div></div>
+      <div class="simulator-result" aria-live="polite"><div><span>RESULT</span><strong data-sim-result-title>Ready</strong><p data-sim-result>시나리오를 선택하고 Run을 눌러 흐름을 확인하세요.</p></div><dl data-sim-facts></dl></div>
+    </div>
+  </section>
+  <section class="project-detail-section" aria-labelledby="contribution-title"><div class="section-index"><span>03</span><h2 id="contribution-title">Key Contributions</h2></div><div class="implementation-grid">{% for item in project.contributions %}<article><span>{{ "%02d"|format(loop.index) }}</span><h3>{{ item.title }}</h3><p>{{ item.body }}</p></article>{% endfor %}</div></section>
+  <section class="project-detail-section evidence-section" aria-labelledby="results-title"><div class="section-index"><span>04</span><h2 id="results-title">Results &amp; Verification</h2></div><div class="evidence-panel"><p>경력기술서에 기록된 수행 결과와 검증 범위만 표시합니다.</p><ul>{% for item in project.results %}<li>{{ item }}</li>{% endfor %}</ul></div></section>
+  <section class="project-detail-section limitations-section" aria-labelledby="challenge-title"><div class="section-index"><span>05</span><h2 id="challenge-title">Technical Challenges</h2></div><ul>{% for item in project.challenges %}<li>{{ item }}</li>{% endfor %}</ul></section>
+  <nav class="project-detail-footer"><a href="/projects/career">← Back to Career Projects</a></nav>
+</article>
+<script src="{{ url_for('static', path='/js/flow-motion.js') }}"></script><script src="{{ url_for('static', path='/js/career-project-sim.js') }}"></script>
+{% endblock %}

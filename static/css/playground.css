@@ -2178,13 +2178,14 @@ body.modal-open {
 @keyframes flow-node-pulse { to { box-shadow: 0 0 16px rgba(88,166,255,.8); } }
 @keyframes flow-progress { to { width: 100%; } }
 
-@media (max-width: 1000px) { .sync-async-flows { grid-template-columns: 1fr; } }
+@media (max-width: 1250px) { .sync-async-flows { grid-template-columns: 1fr; } .sync-diagram,.async-diagram{max-width:720px;margin-right:auto;margin-left:auto} }
 @media (max-width: 700px) {
     .sync-async-toolbar, .sync-async-actions { align-items: stretch; flex-direction: column; }
     .sync-async-summary { grid-template-columns: 1fr; }
     .sync-async-github, .sync-async-primary-button { text-align: center; }
     .flow-canvas { padding: 18px 14px; overflow-x: auto; }
-    .sync-diagram, .async-diagram { min-width: 520px; }
+    .sync-diagram, .async-diagram { min-width: 620px; }
+    .path-label { padding: 2px 4px; border-radius: 4px; background: #0d1117; }
 }
 @media (prefers-reduced-motion: reduce) {
     .system-node, .system-node.is-active > i { transition: none; animation: none; }
