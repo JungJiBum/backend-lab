@@ -37,7 +37,7 @@ Voice Agent Lab의 현재 구현 범위는 STT와 TTS입니다. Agent, Local LLM
 ## 프로젝트 구조
 
 ```text
-my-fastapi/
+backend-lab/
 ├── app/
 │   ├── main.py                 # FastAPI 앱, StaticFiles, Router 등록, health endpoint
 │   └── routers/
@@ -81,7 +81,7 @@ uvicorn app.main:app --reload
 
 ```bash
 ruff check .
-pytest
+python -m pytest
 ```
 
 GitHub Actions는 `dev` 브랜치 push와 `main` 브랜치 대상 Pull Request에서 FastAPI import, Ruff, Pytest를 실행합니다.

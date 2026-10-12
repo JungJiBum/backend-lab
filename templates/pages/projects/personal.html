@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Personal Projects | Jung Jibum{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/pages.css') }}">{% endblock %}
+{% block content %}
+<section class="page-shell">
+  <header class="page-heading">
+    <div><span class="page-eyebrow">PERSONAL PROJECTS</span>
+      <h1>개인 프로젝트</h1>
+    </div>
+    <p>직접 설계하고 구현하며 검증한 개인 개발 프로젝트를 소개합니다.</p>
+  </header>
+  <div class="page-content personal-project-grid">
+    {% for project in projects %}
+    <article class="personal-project-card">
+      <div class="project-card-head"><span>{{ "%02d"|format(loop.index) }} · {{ project.category }}</span>
+        <h2>{{ project.name }}</h2>
+        <p>{{ project.summary }}</p>
+      </div>
+      <ul class="project-feature-list">
+        {% for feature in project.highlights %}<li>{{ feature }}</li>{% endfor %}
+      </ul>
+      <ul class="project-tech-list" aria-label="{{ project.name }} 기술 스택">
+        {% for tech in project.stack %}<li>{{ tech }}</li>{% endfor %}
+      </ul>
+      <div class="project-card-actions"><a class="project-detail-link" href="/projects/personal/{{ project.slug }}">View
+          project →</a><a class="project-github-link" href="{{ project.github }}" target="_blank"
+          rel="noopener noreferrer" aria-label="{{ project.name }} GitHub 저장소 열기">GitHub ↗</a></div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
